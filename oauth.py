@@ -45,11 +45,11 @@ def login_for_access_token(
     response.set_cookie(
         key="token", 
         value=access_token,
-        httponly=False,
+        httponly=True,
         expires=7 * 24 * 60 * 60,
         samesite="Lax",
-        secure=False,
-        domain="retzius-web.vercel.app",
+        secure=True,
+        domain="retzius-web.vercel.app"
     )
     
     return response
