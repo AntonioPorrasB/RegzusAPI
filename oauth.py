@@ -49,7 +49,7 @@ def login_for_access_token(
         expires=7 * 24 * 60 * 60,  # Tiempo de expiración en segundos
         samesite="Lax",  # Ajusta SameSite según tus necesidades ('Strict', 'Lax', 'None')
         secure=False,  # Cambia esto a True si usas HTTPS
-        domain="localhost",
+        domain="retzius-web.vercel.app",
     )
     
     return response
