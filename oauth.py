@@ -44,11 +44,12 @@ def login_for_access_token(
     )
     response.set_cookie(
         key="token", 
-        value=access_token,
-        httponly=True,
-        expires=7 * 24 * 60 * 60,
-        samesite="None",
-        secure=True
+        value=access_token,  # Puedes incluir el prefijo Bearer si es necesario
+        httponly=False,  # HttpOnly para que solo sea accesible por el servidor
+        expires=7 * 24 * 60 * 60,  # Tiempo de expiración en segundos
+        samesite="Lax",  # Ajusta SameSite según tus necesidades ('Strict', 'Lax', 'None')
+        secure=False,  # Cambia esto a True si usas HTTPS
+        domain="localhost",
     )
     
     return response
