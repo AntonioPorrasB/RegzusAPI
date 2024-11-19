@@ -24,8 +24,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://localhost:8000",
-        "https://softwave-innovate.tech",
-        "https://softwaveapi.onrender.com",
+        "https://retzius-web.vercel.app",
+        "https://regzusapi.onrender.com",
         "http://127.0.0.1:3000",
     ],
     allow_credentials=True,
