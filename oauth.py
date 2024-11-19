@@ -47,9 +47,8 @@ def login_for_access_token(
         value=access_token,
         httponly=True,
         expires=7 * 24 * 60 * 60,
-        samesite="Lax",
-        secure=True,
-        domain="retzius-web.vercel.app"
+        samesite="None",
+        secure=True
     )
     
     return response
