@@ -1,0 +1,22 @@
+# Entorno virtual
+venv/
+env/
+
+# Archivos generados por Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Configuración de entornos locales
+*.env
+*.local
+
+# Archivos de bases de datos locales
+*.db
+*.sqlite3
+
+# Archivos de compilación y distribución
+build/
+dist/
+*.egg-info/
