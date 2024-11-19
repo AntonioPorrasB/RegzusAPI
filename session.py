@@ -73,7 +73,6 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
         expires=7 * 24 * 60 * 60,
         samesite="Lax",
         secure=False,
-        domain="localhost",
     )
 
     return UserResponse(
