@@ -69,10 +69,10 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
     response.set_cookie(
         key="token", 
         value=access_token,
-        httponly=False,
+        httponly=True,
         expires=7 * 24 * 60 * 60,
         samesite="Lax",
-        secure=False,
+        secure=True,
         domain="retzius-web.vercel.app"
     )
 
