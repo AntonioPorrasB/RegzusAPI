@@ -71,9 +71,8 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
         value=access_token,
         httponly=True,
         expires=7 * 24 * 60 * 60,
-        samesite="Lax",
-        secure=True,
-        domain="retzius-web.vercel.app"
+        samesite="None",
+        secure=True
     )
 
     return UserResponse(
