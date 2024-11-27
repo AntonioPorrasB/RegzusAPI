@@ -180,6 +180,17 @@ async def get_student(student_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Estudiante no encontrado")
     return student
 
+@crud_router.get("/students/by_control/{numero_control}", response_model=StudentResponse, tags=['Students'])
+async def get_student_by_control(
+    numero_control: str, 
+    db: Session = Depends(get_db)
+):
+    # Buscar al estudiante por número de control
+    student = db.query(Student).filter(Student.numero_control == numero_control).first()
+    if student is None:
+        raise HTTPException(status_code=404, detail="Estudiante no encontrado")
+    return student
+
 @crud_router.put("/students/{student_id}", response_model=StudentResponse, tags=['Students'])
 async def update_student(
     student_id: int,
