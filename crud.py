@@ -292,6 +292,38 @@ async def create_subject(
     db.refresh(new_subject)
     return new_subject
 
+
+@crud_router.get("/subjects/{subject_id}/enrollments", response_model=List[StudentEnrollmentResponse], tags=['Enrollments'])
+async def get_subject_enrollments(
+    subject_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    # Verificar que la materia pertenezca al profesor actual
+    subject = db.query(Subject)\
+        .filter(
+            Subject.id == subject_id,
+            Subject.id_maestro == current_user.id
+        ).first()
+    
+    if not subject:
+        raise HTTPException(status_code=404, detail="Materia no encontrada")
+    
+    # Obtener todos los estudiantes matriculados en la materia
+    enrollments = db.query(Enrollment)\
+        .join(Student, Enrollment.id_alumno == Student.id)\
+        .filter(Enrollment.id_materia == subject_id)\
+        .all()
+    
+    # Mapear los resultados para incluir los detalles del estudiante
+    enrollment_details = [{
+        "numero_control": enrollment.student.numero_control,
+        "nombre": enrollment.student.nombre,
+        "apellido": enrollment.student.apellido
+    } for enrollment in enrollments]
+    
+    return enrollment_details
+
 @crud_router.get("/subjects/", response_model=List[SubjectResponse], tags=['Subjects'])
 async def get_subjects(
     skip: int = 0,
