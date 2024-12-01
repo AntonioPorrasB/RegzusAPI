@@ -157,3 +157,12 @@ class PasswordUpdateRequest(BaseModel):
     current_password: str = Field(..., description="La contraseña actual del usuario")
     new_password: str = Field(..., description="La nueva contraseña del usuario")
     confirm_password: str = Field(..., description="Confirmación de la nueva contraseña")
+
+
+class StudentEnrollmentResponse(BaseModel):
+    numero_control: str
+    nombre: str
+    apellido: str
+
+    class Config:
+        orm_mode = True
