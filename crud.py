@@ -12,7 +12,7 @@ import cloudinary.uploader
 from database import (
     EnrollmentRequest, User, get_db, Student, Subject, Enrollment, Attendance,
     StudentCreate, StudentResponse, SubjectCreate, SubjectResponse,
-    EnrollmentCreate, AttendanceCreate, AttendanceResponse
+    EnrollmentCreate, AttendanceCreate, AttendanceResponse, StudentEnrollmentResponse
 )
 from oauth import get_current_user
 
