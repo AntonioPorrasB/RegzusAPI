@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, D
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 from sqlalchemy import create_engine
 from pydantic import BaseModel, Field
-from datetime import datetime
+from datetime import datetime, date
 from typing import Optional
 
 #DATABASE_URL = "postgresql://postgres:R4kav3liYT@localhost/reconasist"
@@ -132,7 +132,7 @@ class EnrollmentCreate(BaseModel):
     id_materia: int
 
 class AttendanceCreate(BaseModel):
-    fecha: Date
+    fecha: date
     presente: bool
     id_matricula: int
     
