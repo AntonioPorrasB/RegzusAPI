@@ -1,5 +1,4 @@
-from datetime import date
-import datetime
+from datetime import date, datetime
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File,Form
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import Date
