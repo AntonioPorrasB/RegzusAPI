@@ -590,11 +590,10 @@ async def create_attendance(
     if not subject:
         raise HTTPException(status_code=404, detail="Materia no encontrada")
     
-    # Obtener todas las matrículas de la materia
+    # Obtener todas las matrículas de la materia con información de alumno
     enrollments = db.query(Enrollment)\
         .filter(Enrollment.id_materia == subject_id)\
         .all()
-    enrollment_dict = {e.id_alumno: e.id for e in enrollments}
     
     attendance_records = []
     current_date = datetime.now().date()
@@ -615,13 +614,21 @@ async def create_attendance(
     # Crear registros de asistencia
     for data in attendance_data:
         student_id = data.get('student_id')
-        if student_id not in enrollment_dict:
+        
+        # Buscar específicamente la matrícula para este alumno y esta materia
+        enrollment = db.query(Enrollment)\
+            .filter(
+                Enrollment.id_alumno == student_id,
+                Enrollment.id_materia == subject_id
+            ).first()
+        
+        if not enrollment:
             continue  # Ignorar estudiantes no matriculados
             
         attendance = Attendance(
             fecha=current_date,
             presente=data.get('presente', False),
-            id_matricula=enrollment_dict[student_id]
+            id_matricula=enrollment.id  # Usar el id de la matrícula encontrada
         )
         db.add(attendance)
         attendance_records.append(attendance)
