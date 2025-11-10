@@ -24,9 +24,9 @@ crud_router = APIRouter()
 class CloudinaryPhotoManager:
     def __init__(self):
         cloudinary.config(
-           cloud_name='dmdzm3yds',
-           api_key='413339459694985',
-           api_secret='aYwfNubVroFhxdgTD9Z8ijcbEXA'
+           cloud_name='',
+           api_key='',
+           api_secret=''
         )
         self.base_folder = "alumnos"  # Carpeta base para todos los alumnos
     
