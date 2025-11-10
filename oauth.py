@@ -9,7 +9,7 @@ from utils import verify_password, create_access_token, verify_token
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 oauth_router = APIRouter()
 
-SECRET_KEY = "PB(7-/BN$qZShi'6.F#3>z46AW\r&H"
+SECRET_KEY = ""
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 7 * 24 * 60 * 60
 
