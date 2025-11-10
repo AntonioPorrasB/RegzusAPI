@@ -5,8 +5,8 @@ from pydantic import BaseModel, Field
 from datetime import datetime, date
 from typing import Optional
 
-#DATABASE_URL = "postgresql://postgres:R4kav3liYT@localhost/reconasist"
-DATABASE_URL = "postgresql://regzusdb_calr_user:TdvWVRiJ0Zli8vGLiq8MNOgVwHiVxkff@dpg-csuef6jqf0us738qtg50-a.frankfurt-postgres.render.com/regzusdb_calr"
+#DATABASE_URL = ""
+DATABASE_URL = ""
 engine = create_engine(DATABASE_URL)
 Base = declarative_base()
 # Crear la base de datos
