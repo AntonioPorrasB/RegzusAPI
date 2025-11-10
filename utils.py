@@ -9,7 +9,7 @@ from database import User
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Clave secreta y algoritmo para JWT
-SECRET_KEY = os.getenv("SECRET_KEY", "PB(7-/BN$qZShi'6.F#3>z46AW\r&H")
+SECRET_KEY = os.getenv("SECRET_KEY", "
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 7 * 24 * 60  # 7 días
 
