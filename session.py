@@ -10,7 +10,7 @@ from utils import create_access_token, get_password_hash, verify_password
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 session_router = APIRouter()
 
-SECRET_KEY = "PB(7-/BN$qZShi'6.F#3>z46AW\r&H"
+SECRET_KEY = ""
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 7 * 24 * 60 * 60
 
@@ -68,11 +68,11 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
     )
     response.set_cookie(
         key="token", 
-        value=access_token,  # Puedes incluir el prefijo Bearer si es necesario
+        value=access_token,  
         httponly=False,  # HttpOnly para que solo sea accesible por el servidor
         expires=7 * 24 * 60 * 60,  # Tiempo de expiración en segundos
-        samesite="Lax",  # Ajusta SameSite según tus necesidades ('Strict', 'Lax', 'None')
-        secure=False,  # Cambia esto a True si usas HTTPS
+        samesite="Lax", 
+        secure=False,  
         domain="retzius-web.vercel.app",
     )
 
